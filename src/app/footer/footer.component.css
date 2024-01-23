@@ -1,0 +1,13 @@
+.app-footer {
+  background-color: #3f51b5;
+  height: 5em;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+p {
+  color: white;
+  padding-right: 1em;
+}

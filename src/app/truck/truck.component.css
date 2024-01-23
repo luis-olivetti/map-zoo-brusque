@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  /* width: 50%; */
+}
+
+.form-left {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 1em;
+}
+
+.form-right {
+  padding: 1em;
+  width: 50%;
+}
+
+.title {
+  font-size: larger;
+  padding-bottom: 1em;
+  color: darkslategray;
+}
+
+#map {
+  display: flex;
+  justify-content: center;
+}
+
+.button-operation {
+  width: 100%;
+  align-self: center;
+}

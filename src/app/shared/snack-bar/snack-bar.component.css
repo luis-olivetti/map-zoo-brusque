@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+}
+
+.message {
+  color: hotpink;
+}

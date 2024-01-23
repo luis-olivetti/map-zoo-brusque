@@ -1,0 +1,14 @@
+/* #map {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+} */
+
+.info-marker-content {
+  width: 25em;
+}
+
+.g-map {
+  height: 100%;
+  width: 100%;
+}

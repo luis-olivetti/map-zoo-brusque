@@ -1,0 +1,16 @@
+<div class="fixed-top">
+  <mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Parque Zoobotânico de Brusque</span>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/truck-list">
+        <span>Trucks</span>
+      </button>
+      <button mat-menu-item routerLink="/trucks-on-map">
+        <span>Mapa</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+</div>
