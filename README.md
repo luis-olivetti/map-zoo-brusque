@@ -1,4 +1,4 @@
-# CadeMeuFoodTruck
+# Map Zoo Brusque
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
@@ -15,13 +15,13 @@ Enter a valid Google key for Google Maps to work:
 Run this command to install this project's dependencies:
 
 ```bash
-CadeMeuFoodTruck$ npm install
+MapZooBrusque$ npm install
 ```
 
 Run the following command to start json-server and angular project:
 
 ```bash
-CadeMeuFoodTruck$ npm start
+MapZooBrusque$ npm start
 ```
 
 ## How to works
@@ -41,7 +41,7 @@ Clicking on `Adicionar` or editing (using the pencil icon) will navigate the web
 This is it!
 
 
-estudar
+## Notes
 
 https://developers.google.com/maps/documentation/javascript/examples/maptype-image-overlay
 
