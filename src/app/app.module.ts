@@ -9,13 +9,14 @@ import { TruckComponent } from './truck/truck.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { TrucksOnMapComponent } from './trucks-on-map/trucks-on-map.component';
 import { SnackBarComponent } from './shared/snack-bar/snack-bar.component';
 import { TruckListComponent } from './truck-list/truck-list.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { CorsInterceptor } from './cors.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,11 +39,14 @@ import { FooterComponent } from './footer/footer.component';
     GoogleMapsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    // AgmCoreModule.forRoot({
-    //   apiKey: environment.googleMapsKey
-    // })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -22,8 +22,8 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
   public optionsMap: google.maps.MapOptions = {
     center: { lat: -27.094225, lng: -48.921469 },
     zoom: 19,
-    streetViewControl: true,
-    disableDefaultUI: true,
+    // streetViewControl: true,
+    // disableDefaultUI: true,
     restriction: {
       latLngBounds: {
         north: -27.093225,
@@ -33,12 +33,12 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
       },
       strictBounds: true,
     },
-    styles: [
-      {
-        featureType: 'poi',
-        stylers: [{ visibility: 'off' }],
-      },
-    ],
+    // styles: [
+    //   {
+    //     featureType: 'poi',
+    //     stylers: [{ visibility: 'off' }],
+    //   },
+    // ],
   };
 
   public markerPositions: {
@@ -93,14 +93,20 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
 
     this.streetViewLayer = new google.maps.StreetViewCoverageLayer();
     if (this.mapContainer.googleMap) {
-      this.streetViewLayer.setMap(this.mapContainer.googleMap);
-
+      //this.streetViewLayer.setMap(this.mapContainer.googleMap);
 
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
 
+      const ctaLayer = new google.maps.KmlLayer({
+        url: 'https://raw.githubusercontent.com/luis-olivetti/map-zoo-brusque/main/src/assets/zoo.kml',
+        map: this.mapContainer.googleMap,
+      });
+
+      ctaLayer.setMap(this.mapContainer.googleMap);
+
       if (mapContainerElement) {
-        mapContainerElement.style.height = '400px';
-        mapContainerElement.style.width = '400px';
+        mapContainerElement.style.height = '600px';
+        mapContainerElement.style.width = '1000px';
       }
     } else {
       console.log('streetViewLayer not set');
