@@ -1,0 +1,11 @@
+<div id="map" *ngIf="apiLoaded | async">
+  <div class="g-map">
+    <google-map #mapContainer (projectionChanged)="onMapReady()" [options]="optionsMap" (mapDrag)="handleMapDrag()">
+      <map-marker #marker="mapMarker" *ngFor="let markerPosition of markerPositions"
+        [position]="markerPosition.position" [options]="markerPosition.options"
+        (mapClick)="handleMarkerClick(markerPosition, marker)">
+      </map-marker>
+      <map-info-window></map-info-window>
+    </google-map>
+  </div>
+</div>

@@ -6,20 +6,17 @@
 
 .form-group {
   display: flex;
-  flex-direction: row;
-  /* width: 50%; */
+  flex-direction: column;
 }
 
 .form-left {
   display: flex;
   flex-direction: column;
-  width: 50%;
   padding: 1em;
 }
 
 .form-right {
   padding: 1em;
-  width: 50%;
 }
 
 .title {

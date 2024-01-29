@@ -1,29 +1,29 @@
-<div id="truck-container-list">
+<div id="marker-container-list">
   <div class="button-container">
-    <button mat-icon-button color="primary" routerLink="/truck">
+    <button mat-icon-button color="primary" routerLink="/marker">
       <mat-icon>add</mat-icon> Adicionar
     </button>
   </div>
 
   <mat-divider></mat-divider>
 
-  <table mat-table [dataSource]="trucks" class="truck-table">
+  <table mat-table [dataSource]="markers" class="marker-table">
     <ng-container *ngFor="let column of displayedColumns">
       <ng-container matColumnDef="{{ column }}">
         <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
 
         <div *ngIf="column === 'actions'">
-          <td mat-cell *matCellDef="let truck">
-            <button mat-icon-button color="primary" (click)="editTruck(truck)">
+          <td mat-cell *matCellDef="let marker">
+            <button mat-icon-button color="primary" (click)="editMarker(marker)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteTruck(truck)">
+            <button mat-icon-button color="warn" (click)="deleteMarker(marker)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
         </div>
         <div *ngIf="column !== 'actions'">
-          <td mat-cell *matCellDef="let truck">{{ truck[column] }}</td>
+          <td mat-cell *matCellDef="let marker">{{ marker[column] }}</td>
         </div>
       </ng-container>
     </ng-container>

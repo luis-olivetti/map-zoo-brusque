@@ -1,31 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TruckComponent } from './truck/truck.component';
+import { MarkerComponent } from './marker/marker.component';
 import { RouterModule, Routes } from '@angular/router';
-import { TrucksOnMapComponent } from './trucks-on-map/trucks-on-map.component';
-import { TruckListComponent } from './truck-list/truck-list.component';
+import { MapWithMarkersComponent } from './map-with-markers/map-with-markers.component';
+import { MarkerListComponent } from './marker-list/marker-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'trucks-on-map',
+    redirectTo: 'map-with-markers',
     pathMatch: 'full',
   },
   {
-    path: 'truck',
-    component: TruckComponent,
+    path: 'marker',
+    component: MarkerComponent,
   },
   {
-    path: 'truck/:id',
-    component: TruckComponent,
+    path: 'marker/:id',
+    component: MarkerComponent,
   },
   {
-    path: 'trucks-on-map',
-    component: TrucksOnMapComponent,
+    path: 'map-with-markers',
+    component: MapWithMarkersComponent,
   },
   {
-    path: 'truck-list',
-    component: TruckListComponent,
+    path: 'marker-list',
+    component: MarkerListComponent,
   },
 ];
 

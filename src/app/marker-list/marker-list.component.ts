@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TruckService } from '../services/truck.service';
-import { Truck } from '../models/truck';
+import { MarkerService } from '../services/marker.service';
+import { Marker } from '../models/marker';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
@@ -9,53 +9,49 @@ import { SnackBarComponent } from '../shared/snack-bar/snack-bar.component';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-truck-list',
-  templateUrl: './truck-list.component.html',
-  styleUrls: ['./truck-list.component.css'],
+  selector: 'app-marker-list',
+  templateUrl: './marker-list.component.html',
+  styleUrls: ['./marker-list.component.css'],
 })
-export class TruckListComponent implements OnInit, OnDestroy {
-  private trucksSubscription!: Subscription;
+export class MarkerListComponent implements OnInit, OnDestroy {
+  private markersSubscription!: Subscription;
   private durationInSeconds = 5;
-  public trucks: Truck[] = [];
+  public markers: Marker[] = [];
   public displayedColumns: string[] = [
     'id',
     'name',
-    'address',
-    'email',
-    'phone',
-    'type',
     'actions',
   ];
 
   constructor(
-    private trucksService: TruckService,
+    private markersService: MarkerService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router
   ) {}
 
   ngOnDestroy(): void {
-    this.trucksSubscription.unsubscribe();
+    this.markersSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.getTrucks();
+    this.getMarkers();
   }
 
-  private getTrucks(): void {
-    this.trucksSubscription = this.trucksService
-      .getTrucks()
-      .subscribe((trucks) => {
-        this.trucks = trucks;
+  private getMarkers(): void {
+    this.markersSubscription = this.markersService
+      .getMarkers()
+      .subscribe((markers) => {
+        this.markers = markers;
       });
   }
 
-  public editTruck(truck: Truck): void {
-    const truckId = truck.id;
-    this.router.navigate(['/truck', truckId]);
+  public editMarker(marker: Marker): void {
+    const id = marker.id;
+    this.router.navigate(['/marker', id]);
   }
 
-  public deleteTruck(truck: Truck): void {
+  public deleteMarker(marker: Marker): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
       data: 'Tem certeza de que deseja excluir este registro?',
@@ -63,10 +59,10 @@ export class TruckListComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.trucksService.deleteTruck(truck.id).subscribe(
+        this.markersService.deleteMarker(marker.id).subscribe(
           () => {
-            this.openSnackBar('Truck excluído!');
-            this.getTrucks();
+            this.openSnackBar('Registro removido.');
+            this.getMarkers();
           },
           (error) => {
             this.openSnackBar('Ops, ocorreu uma falha ao excluir.');

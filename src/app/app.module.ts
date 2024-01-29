@@ -5,14 +5,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
-import { TruckComponent } from './truck/truck.component';
+import { MarkerComponent } from './marker/marker.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { TrucksOnMapComponent } from './trucks-on-map/trucks-on-map.component';
+import { MapWithMarkersComponent } from './map-with-markers/map-with-markers.component';
 import { SnackBarComponent } from './shared/snack-bar/snack-bar.component';
-import { TruckListComponent } from './truck-list/truck-list.component';
+import { MarkerListComponent } from './marker-list/marker-list.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { FooterComponent } from './footer/footer.component';
@@ -21,10 +21,10 @@ import { CorsInterceptor } from './cors.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    TruckComponent,
-    TrucksOnMapComponent,
+    MarkerComponent,
+    MapWithMarkersComponent,
     SnackBarComponent,
-    TruckListComponent,
+    MarkerListComponent,
     ConfirmDialogComponent,
     HeaderMenuComponent,
     FooterComponent,

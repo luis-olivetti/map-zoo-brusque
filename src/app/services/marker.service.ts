@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Truck } from '../models/truck';
+import { Marker } from '../models/marker';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -8,36 +8,36 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class TruckService {
+export class MarkerService {
   private apiUrl = environment.backendUrl + '/trucksOnMap';
 
   constructor(private http: HttpClient) { }
 
-  public getTrucks(): Observable<Truck[]> {
+  public getMarkers(): Observable<Marker[]> {
     return this.http
-      .get<Truck[]>(this.apiUrl)
+      .get<Marker[]>(this.apiUrl)
       .pipe(catchError(this.handleError));
   }
 
-  public getTruckById(truckId: number): Observable<Truck> {
+  public getMarkerById(truckId: number): Observable<Marker> {
     const url = `${this.apiUrl}/${truckId}`;
-    return this.http.get<Truck>(url).pipe(catchError(this.handleError));
+    return this.http.get<Marker>(url).pipe(catchError(this.handleError));
   }
 
-  public createTruck(truck: Truck): Observable<any> {
+  public createMarker(truck: Marker): Observable<any> {
     return this.http
       .post(this.apiUrl, truck)
       .pipe(catchError(this.handleError));
   }
 
-  public updateTruck(truck: Truck): Observable<any> {
+  public updateMarker(truck: Marker): Observable<any> {
     console.log(truck.id);
 
     const url = `${this.apiUrl}/${truck.id}`;
     return this.http.put(url, truck).pipe(catchError(this.handleError));
   }
 
-  public deleteTruck(truckId: number): Observable<any> {
+  public deleteMarker(truckId: number): Observable<any> {
     const url = `${this.apiUrl}/${truckId}`;
     return this.http.delete(url).pipe(catchError(this.handleError));
   }

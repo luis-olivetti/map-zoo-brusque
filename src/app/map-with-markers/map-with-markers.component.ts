@@ -3,24 +3,24 @@ import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '
 import { Observable, Subscription, of } from 'rxjs';
 import { catchError, mapTo } from 'rxjs/operators';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
-import { TruckService } from '../services/truck.service';
+import { MarkerService } from '../services/marker.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-trucks-on-map',
-  templateUrl: './trucks-on-map.component.html',
-  styleUrls: ['./trucks-on-map.component.css'],
+  selector: 'app-map-with-markers',
+  templateUrl: './map-with-markers.component.html',
+  styleUrls: ['./map-with-markers.component.css'],
 })
-export class TrucksOnMapComponent implements OnInit, OnDestroy {
+export class MapWithMarkersComponent implements OnInit, OnDestroy {
   @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
   @ViewChild('mapContainer', { static: false }) mapContainer!: GoogleMap;
 
-  public streetViewLayer!: google.maps.StreetViewCoverageLayer;
-
   public apiLoaded: Observable<boolean>;
 
+  public info: string = '';
+
   public optionsMap: google.maps.MapOptions = {
-    center: { lat: -27.094225, lng: -48.921469 },
+    center: { lat: -27.094245073541256, lng: -48.92152550568243 },
     zoom: 19,
     streetViewControl: false,
     disableDefaultUI: true,
@@ -52,8 +52,43 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
     options: google.maps.MarkerOptions;
   }[] = [];
 
-  public handleMarkerClick(markerPosition: any): void {
+  public handleMapDrag(): void {
+    this.infoWindow.close();
+  }
+
+  public handleMarkerClick(markerPosition: any, marker: MapMarker): void {
     this.selectedMarker = markerPosition;
+
+    this.info =
+    '<div id="content">' +
+    '<div id="siteNotice">' +
+    "</div>" +
+    '<h1 id="firstHeading" class="firstHeading">' + this.selectedMarker.name + '</h1>' +
+    '<div id="bodyContent">' +
+    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+    "sandstone rock formation in the southern part of the " +
+    "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
+    "south west of the nearest large town, Alice Springs; 450&#160;km " +
+    "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
+    "features of the Uluru - Kata Tjuta National Park. Uluru is " +
+    "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
+    "Aboriginal people of the area. It has many springs, waterholes, " +
+    "rock caves and ancient paintings. Uluru is listed as a World " +
+    "Heritage Site.</p>" +
+    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+    "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
+    "(last visited June 22, 2009).</p>" +
+    "</div>" +
+    "</div>";
+
+    const infoWindowOptions: google.maps.InfoWindowOptions = {
+      maxWidth: 300,
+      content: this.info,
+      pixelOffset: new google.maps.Size(0, 100),
+    };
+    this.infoWindow.options = infoWindowOptions;
+
+    this.infoWindow.open(marker, true);
   }
 
   public selectedMarker!: {
@@ -64,11 +99,11 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
     type: string;
   };
 
-  private trucksSubscription!: Subscription;
+  private markersSubscription!: Subscription;
 
   constructor(
     private httpClient: HttpClient,
-    private trucksService: TruckService,
+    private markersService: MarkerService,
     private renderer: Renderer2
   ) {
     this.apiLoaded = this.httpClient
@@ -82,33 +117,28 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
       );
   }
   ngOnDestroy(): void {
-    this.trucksSubscription.unsubscribe();
+    this.markersSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.getTrucks();
+    this.getMarkers();
   }
 
   onMapReady() {
-    this.streetViewLayer = new google.maps.StreetViewCoverageLayer();
     if (this.mapContainer.googleMap) {
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
 
       const ctaLayer = new google.maps.KmlLayer({
         url: 'https://raw.githubusercontent.com/luis-olivetti/map-zoo-brusque/main/src/assets/zoo.kml',
         map: this.mapContainer.googleMap,
+        clickable: false,
       });
 
       ctaLayer.setMap(this.mapContainer.googleMap);
 
       if (mapContainerElement) {
-        if (this.isMobile()) {
-          mapContainerElement.style.height = '300px';
-          mapContainerElement.style.width = '400px';
-        } else {
-          mapContainerElement.style.height = '500px';
-          mapContainerElement.style.width = '1000px';
-        }
+        mapContainerElement.style.height = (window.innerHeight * 0.8) + 'px';
+        mapContainerElement.style.width = window.innerWidth + 'px';
       }
     } else {
       console.log('streetViewLayer not set');
@@ -141,9 +171,9 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getTrucks(): void {
-    this.trucksSubscription = this.trucksService
-      .getTrucks()
+  private getMarkers(): void {
+    this.markersSubscription = this.markersService
+      .getMarkers()
       .subscribe((trucks) => {
         this.markerPositions = trucks.map((truck) => ({
           position: {
