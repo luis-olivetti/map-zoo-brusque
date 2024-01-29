@@ -106,7 +106,7 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
           mapContainerElement.style.height = '300px';
           mapContainerElement.style.width = '400px';
         } else {
-          mapContainerElement.style.height = '600px';
+          mapContainerElement.style.height = '500px';
           mapContainerElement.style.width = '1000px';
         }
       }
