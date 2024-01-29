@@ -9,9 +9,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class TruckService {
-  private apiUrl = 'http://localhost:3000/trucksOnMap';
+  private apiUrl = environment.backendUrl + '/trucksOnMap';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getTrucks(): Observable<Truck[]> {
     return this.http
