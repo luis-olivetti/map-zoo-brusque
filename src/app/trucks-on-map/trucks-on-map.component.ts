@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Observable, Subscription, of } from 'rxjs';
 import { catchError, mapTo } from 'rxjs/operators';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
@@ -22,8 +22,8 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
   public optionsMap: google.maps.MapOptions = {
     center: { lat: -27.094225, lng: -48.921469 },
     zoom: 19,
-    // streetViewControl: true,
-    // disableDefaultUI: true,
+    streetViewControl: false,
+    disableDefaultUI: true,
     restriction: {
       latLngBounds: {
         north: -27.093225,
@@ -33,12 +33,12 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
       },
       strictBounds: true,
     },
-    // styles: [
-    //   {
-    //     featureType: 'poi',
-    //     stylers: [{ visibility: 'off' }],
-    //   },
-    // ],
+    styles: [
+      {
+        featureType: 'poi',
+        stylers: [{ visibility: 'off' }],
+      },
+    ],
   };
 
   public markerPositions: {
@@ -68,7 +68,8 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
 
   constructor(
     private httpClient: HttpClient,
-    private trucksService: TruckService
+    private trucksService: TruckService,
+    private renderer: Renderer2
   ) {
     this.apiLoaded = this.httpClient
       .jsonp(
@@ -89,12 +90,8 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
   }
 
   onMapReady() {
-    console.log('carregou mapa');
-
     this.streetViewLayer = new google.maps.StreetViewCoverageLayer();
     if (this.mapContainer.googleMap) {
-      //this.streetViewLayer.setMap(this.mapContainer.googleMap);
-
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
 
       const ctaLayer = new google.maps.KmlLayer({
@@ -105,8 +102,13 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
       ctaLayer.setMap(this.mapContainer.googleMap);
 
       if (mapContainerElement) {
-        mapContainerElement.style.height = '600px';
-        mapContainerElement.style.width = '1000px';
+        if (this.isMobile()) {
+          mapContainerElement.style.height = '300px';
+          mapContainerElement.style.width = '400px';
+        } else {
+          mapContainerElement.style.height = '600px';
+          mapContainerElement.style.width = '1000px';
+        }
       }
     } else {
       console.log('streetViewLayer not set');
@@ -139,15 +141,6 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ngAfterViewInit() {
-  //   const mapContainerElement = this.mapContainer.googleMap?.getDiv();
-
-  //   if (mapContainerElement) {
-  //     mapContainerElement.style.height = '50%';
-  //     mapContainerElement.style.width = '50%';
-  //   }
-  // }
-
   private getTrucks(): void {
     this.trucksSubscription = this.trucksService
       .getTrucks()
@@ -170,5 +163,9 @@ export class TrucksOnMapComponent implements OnInit, OnDestroy {
           },
         }));
       });
+  }
+
+  private isMobile(): boolean {
+    return window.innerWidth <= 768; // Defina um ponto de quebra adequado para dispositivos móveis
   }
 }
