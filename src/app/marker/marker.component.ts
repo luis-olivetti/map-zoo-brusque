@@ -72,8 +72,8 @@ export class MarkerComponent implements OnInit {
       id: [''],
       name: ['', Validators.required],
       description: ['', Validators.required],
-      lat: ['', Validators.required],
-      lng: ['', Validators.required],
+      lat: [0, [Validators.required, Validators.min(1)]],
+      lng: [0, [Validators.required, Validators.min(1)]],
     });
   }
 
@@ -161,8 +161,18 @@ export class MarkerComponent implements OnInit {
     snackBarComponent.message = message;
   }
 
+  public definePositionOnLatLngChange() {
+    this.markerPosition = {
+      lat: this.markerForm.get('lat')?.value,
+      lng: this.markerForm.get('lng')?.value,
+    };
+  }
+
   public onSubmit() {
     if (this.markerForm.valid) {
+
+      this.definePositionOnLatLngChange();
+
       if (this.operation === 'EDIT') {
         this.markerService.updateMarker(this.markerForm.value).subscribe(
           () => {

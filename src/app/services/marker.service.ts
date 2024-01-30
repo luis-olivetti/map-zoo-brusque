@@ -31,8 +31,6 @@ export class MarkerService {
   }
 
   public updateMarker(truck: Marker): Observable<any> {
-    console.log(truck.id);
-
     const url = `${this.apiUrl}/${truck.id}`;
     return this.http.put(url, truck).pipe(catchError(this.handleError));
   }
