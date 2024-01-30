@@ -22,6 +22,8 @@ export class MarkerListComponent implements OnInit, OnDestroy {
     'name',
     'actions',
   ];
+  public filterValue: string = '';
+  private originalMarkers: Marker[] = [];
 
   constructor(
     private markersService: MarkerService,
@@ -38,12 +40,26 @@ export class MarkerListComponent implements OnInit, OnDestroy {
     this.getMarkers();
   }
 
+  public applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.markers = this.originalMarkers;
+    this.markers = this.markers.filter(marker =>
+      marker.name.toLowerCase().includes(filterValue.trim().toLowerCase())
+    );
+  }
+
   private getMarkers(): void {
     this.markersSubscription = this.markersService
       .getMarkers()
       .subscribe((markers) => {
         this.markers = markers;
       });
+
+    this.markersSubscription = this.markersService
+    .getMarkers()
+    .subscribe((markers) => {
+      this.originalMarkers = markers;
+    });
   }
 
   public editMarker(marker: Marker): void {

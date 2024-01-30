@@ -7,6 +7,13 @@
 
   <mat-divider></mat-divider>
 
+  <div class="filter-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Filtrar por nome</mat-label>
+      <input matInput placeholder="Digite o nome do marcador" (keyup)="applyFilter($event)">
+    </mat-form-field>
+  </div>
+
   <table mat-table [dataSource]="markers" class="marker-table">
     <ng-container *ngFor="let column of displayedColumns">
       <ng-container matColumnDef="{{ column }}">

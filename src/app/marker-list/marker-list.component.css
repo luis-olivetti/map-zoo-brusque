@@ -9,3 +9,8 @@
 #marker-container-list {
   margin: 1em 1em 1em 1em;
 }
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+}
