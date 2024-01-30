@@ -44,11 +44,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
   public markerPositions: {
     position: google.maps.LatLngLiteral;
     name: string;
-    address: string;
-    email: string;
-    phone: string;
-    type: string;
-    label: string;
+    description: string;
     options: google.maps.MarkerOptions;
   }[] = [];
 
@@ -64,39 +60,36 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
     '<div id="siteNotice">' +
     "</div>" +
     '<h1 id="firstHeading" class="firstHeading">' + this.selectedMarker.name + '</h1>' +
-    '<div id="bodyContent">' +
-    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-    "sandstone rock formation in the southern part of the " +
-    "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-    "south west of the nearest large town, Alice Springs; 450&#160;km " +
-    "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-    "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-    "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-    "Aboriginal people of the area. It has many springs, waterholes, " +
-    "rock caves and ancient paintings. Uluru is listed as a World " +
-    "Heritage Site.</p>" +
-    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-    "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-    "(last visited June 22, 2009).</p>" +
+    '<div id="bodyContent"><p>' + this.selectedMarker.description  + '</p>' +
     "</div>" +
     "</div>";
+
+    let pos = marker.getPosition();
+    let height = 0;
+    // if (pos) {
+    //   // Se o infoWindow estiver muito próximo do topo da tela, ele será movido para baixo
+    //   if (pos.lat() > -27.0941) {
+    //     height = 300;
+    //   }
+
+    //   if (pos.lat() < -27.0948) {
+    //     height = 0;
+    //   }
+    // }
 
     const infoWindowOptions: google.maps.InfoWindowOptions = {
       maxWidth: 300,
       content: this.info,
-      pixelOffset: new google.maps.Size(0, 100),
+      pixelOffset: new google.maps.Size(0, height),
     };
-    this.infoWindow.options = infoWindowOptions;
 
+    this.infoWindow.options = infoWindowOptions;
     this.infoWindow.open(marker, true);
   }
 
   public selectedMarker!: {
     name: string;
-    address: string;
-    email: string;
-    phone: string;
-    type: string;
+    description: string;
   };
 
   private markersSubscription!: Subscription;
@@ -181,11 +174,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
             lng: truck.lng,
           },
           name: truck.name,
-          address: truck.address,
-          email: truck.email,
-          phone: truck.phone,
-          type: truck.type,
-          label: truck.label,
+          description: truck.description,
           options: {
             icon: {
               url: truck.icon,
@@ -193,9 +182,5 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
           },
         }));
       });
-  }
-
-  private isMobile(): boolean {
-    return window.innerWidth <= 768; // Defina um ponto de quebra adequado para dispositivos móveis
   }
 }

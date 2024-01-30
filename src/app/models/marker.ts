@@ -3,10 +3,6 @@ export interface Marker {
   lat: number;
   lng: number;
   name: string;
-  address: string;
-  email: string;
-  phone: string;
-  type: string;
-  label: string;
+  description: string;
   icon: string;
 }

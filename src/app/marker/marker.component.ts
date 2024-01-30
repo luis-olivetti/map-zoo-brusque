@@ -71,6 +71,7 @@ export class MarkerComponent implements OnInit {
     this.markerForm = this.formBuilder.group({
       id: [''],
       name: ['', Validators.required],
+      description: ['', Validators.required],
       lat: ['', Validators.required],
       lng: ['', Validators.required],
     });
