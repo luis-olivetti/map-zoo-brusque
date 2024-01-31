@@ -72,9 +72,19 @@ export class MarkerComponent implements OnInit {
       id: [''],
       name: ['', Validators.required],
       description: ['', Validators.required],
-      lat: [0, [Validators.required, Validators.min(1)]],
-      lng: [0, [Validators.required, Validators.min(1)]],
+      lat: [0, [Validators.required, this.nonZeroValidator]],
+      lng: [0, [Validators.required, this.nonZeroValidator]]
     });
+  }
+
+  private nonZeroValidator(control: any) {
+    const value = control.value;
+
+    if (value === 0) {
+      return { nonZero: true };
+    }
+
+    return null;
   }
 
   ngOnInit(): void {
@@ -201,6 +211,10 @@ export class MarkerComponent implements OnInit {
     } else {
       this.openSnackBar('Por favor, preencha todos os campos obrigatórios.');
     }
+  }
+
+  public goBack(): void {
+    this.router.navigate(['/marker-list']);
   }
 
   private loadMarkerDetails(markerId: number): void {

@@ -7,7 +7,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { AppRoutingModule } from './app-routing.module';
 import { MarkerComponent } from './marker/marker.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { MapWithMarkersComponent } from './map-with-markers/map-with-markers.component';
@@ -17,6 +17,7 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { CorsInterceptor } from './cors.interceptor';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CorsInterceptor } from './cors.interceptor';
     ConfirmDialogComponent,
     HeaderMenuComponent,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { CorsInterceptor } from './cors.interceptor';
     GoogleMapsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    FormsModule,
   ],
   providers: [
     {

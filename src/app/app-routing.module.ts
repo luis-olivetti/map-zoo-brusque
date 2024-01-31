@@ -4,6 +4,8 @@ import { MarkerComponent } from './marker/marker.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MapWithMarkersComponent } from './map-with-markers/map-with-markers.component';
 import { MarkerListComponent } from './marker-list/marker-list.component';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -12,12 +14,18 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
     path: 'marker',
     component: MarkerComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'marker/:id',
     component: MarkerComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'map-with-markers',
@@ -26,7 +34,12 @@ const routes: Routes = [
   {
     path: 'marker-list',
     component: MarkerListComponent,
+    canActivate: [AuthGuard]
   },
+  {
+    path: '**',
+    redirectTo: 'map-with-markers',
+  }
 ];
 
 @NgModule({
