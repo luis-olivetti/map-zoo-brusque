@@ -1,7 +1,9 @@
 export const environment = {
   production: false,
-  googleMapsKey: 'your_maps_key',
+  googleMapsKey: '',
   backendUrl: 'http://localhost:3000',
   user: 'usuario',
-  password: 'senha'
+  password: 'senha',
+  userBackend: 'usuario',
+  passwordBackend: 'senha'
 };
