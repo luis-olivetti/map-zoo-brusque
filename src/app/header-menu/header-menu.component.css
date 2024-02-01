@@ -1,0 +1,19 @@
+.fixed-top {
+  display: flex;
+  align-items: center;
+}
+
+mat-toolbar span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adicione isso para mostrar reticências (...) se o texto não couber completamente */
+  flex-grow: 1; /* Permite que o texto expanda ou contraia conforme necessário */
+  font-size: 4vw; /* Valor padrão, ajuste conforme necessário */
+}
+
+@media screen and (min-width: 600px) {
+  mat-toolbar span {
+    font-size: 1vw; /* Tamanho da fonte maior para telas maiores, ajuste conforme necessário */
+  }
+}
+

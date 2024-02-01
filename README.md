@@ -1,6 +1,6 @@
 # Map Zoo Brusque
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6 with node 16.10.0.
 
 ## Backend
 
@@ -15,38 +15,27 @@ Enter a valid Google key for Google Maps to work:
 Run this command to install this project's dependencies:
 
 ```bash
-MapZooBrusque$ npm install
+$ npm install
 ```
 
 Run the following command to start json-server and angular project:
 
 ```bash
-MapZooBrusque$ npm start
+$ npm start
 ```
 
 ## How to works
 
-When starting the project, the map will be focused on a region that contains some fictional trucks, where you can select them and view information such as `name`, `address`, `phone`, `email`, and `type`.
+When starting the project, the map will display the Zoobotanical region of Brusque - SC with some markers indicating the locations of the animals and other points.
 
-![trucks-on-map](./src/assets/images/trucks-on-map.png)
+![map-with-markers](./src/assets/images/map-with-markers.png)
 
-In the top-left corner of the side menu, there is an option called `Trucks` that navigates the website to a page with all registered trucks, where you can **add**, **edit**, and **delete** records.
+In the top-left corner of the side menu, there is an option called `Marcadores` that navigates the website to a page with all registered markers, where you can **add**, **edit**, and **delete** records.
 
-![truck-list](./src/assets/images/truck-list.png)
+![marker-list](./src/assets/images/marker-list.png)
 
-Clicking on `Adicionar` or editing (using the pencil icon) will navigate the website to a page where the operation can be performed. To make it easier, when clicking on a location on the map, the website will automatically populate the `address` field with the address retrieved from **Google Maps**.
+Clicking on `Adicionar` or editing (using the pencil icon) will navigate the website to a page where the operation can be performed.
 
-![truck](./src/assets/images/truck.png)
+![marker](./src/assets/images/marker.png)
 
 This is it!
-
-
-## Notes
-
-https://developers.google.com/maps/documentation/javascript/examples/maptype-image-overlay
-
-https://mapsplatform.google.com/intl/pt-BR/pricing/#:~:text=A%20API%20Maps%20Embed%2C%20o,mensal%20de%20US%24%20200%20).
-
-https://timdeschryver.dev/blog/google-maps-as-an-angular-component#mapinfowindow
-
-https://www.iconfinder.com/search?q=entry&price=free
