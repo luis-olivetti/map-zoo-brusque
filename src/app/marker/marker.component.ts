@@ -51,8 +51,22 @@ export class MarkerComponent implements OnInit {
   public operation: string = 'NEW';
 
   public imageOptions = [
-    { value: 'assets/images/clock.png', url: 'assets/images/clock.png', label: 'Relógio' },
-    { value: 'assets/images/star.png', url: 'assets/images/star.png', label: 'Estrela' },
+    { value: 'assets/images/icons/bird.png', url: 'assets/images/icons/bird.png', label: 'Pássaro' },
+    { value: 'assets/images/icons/block.png', url: 'assets/images/icons/block.png', label: 'Bloqueado' },
+    { value: 'assets/images/icons/cat.png', url: 'assets/images/icons/cat.png', label: 'Gato' },
+    { value: 'assets/images/icons/clock.png', url: 'assets/images/icons/clock.png', label: 'Relógio' },
+    { value: 'assets/images/icons/duck.png', url: 'assets/images/icons/duck.png', label: 'Pato' },
+    { value: 'assets/images/icons/food.png', url: 'assets/images/icons/food.png', label: 'Comida' },
+    { value: 'assets/images/icons/fox.png', url: 'assets/images/icons/fox.png', label: 'Raposa' },
+    { value: 'assets/images/icons/monkey.png', url: 'assets/images/icons/monkey.png', label: 'Macaco' },
+    { value: 'assets/images/icons/owl.png', url: 'assets/images/icons/owl.png', label: 'Coruja' },
+    { value: 'assets/images/icons/paw.png', url: 'assets/images/icons/paw.png', label: 'Pata' },
+    { value: 'assets/images/icons/pig.png', url: 'assets/images/icons/pig.png', label: 'Porco' },
+    { value: 'assets/images/icons/snake.png', url: 'assets/images/icons/snake.png', label: 'Cobra' },
+    { value: 'assets/images/icons/star.png', url: 'assets/images/icons/star.png', label: 'Estrela' },
+    { value: 'assets/images/icons/tree.png', url: 'assets/images/icons/tree.png', label: 'Árvore' },
+    { value: 'assets/images/icons/wc.png', url: 'assets/images/icons/wc.png', label: 'Banheiro' },
+    { value: 'assets/images/icons/wood.png', url: 'assets/images/icons/wood.png', label: 'Madeira' },
   ];
 
   constructor(
