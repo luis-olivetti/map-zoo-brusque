@@ -130,7 +130,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
       ctaLayer.setMap(this.mapContainer.googleMap);
 
       if (mapContainerElement) {
-        mapContainerElement.style.height = (window.innerHeight * 0.8) + 'px';
+        mapContainerElement.style.height = (window.innerHeight - 58) + 'px';//(window.innerHeight * 0.8) + 'px';
         mapContainerElement.style.width = window.innerWidth + 'px';
       }
     } else {

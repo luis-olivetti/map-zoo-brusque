@@ -50,6 +50,11 @@ export class MarkerComponent implements OnInit {
 
   public operation: string = 'NEW';
 
+  public imageOptions = [
+    { value: 'assets/images/clock.png', url: 'assets/images/clock.png', label: 'Relógio' },
+    { value: 'assets/images/star.png', url: 'assets/images/star.png', label: 'Estrela' },
+  ];
+
   constructor(
     private formBuilder: FormBuilder,
     private httpClient: HttpClient,
@@ -73,7 +78,8 @@ export class MarkerComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       lat: [0, [Validators.required, this.nonZeroValidator]],
-      lng: [0, [Validators.required, this.nonZeroValidator]]
+      lng: [0, [Validators.required, this.nonZeroValidator]],
+      icon: ['', Validators.required],
     });
   }
 

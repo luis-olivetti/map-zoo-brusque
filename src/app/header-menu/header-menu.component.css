@@ -1,6 +1,7 @@
 .fixed-top {
   display: flex;
   align-items: center;
+  height: 58px;
 }
 
 mat-toolbar span {
