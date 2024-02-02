@@ -1,5 +1,10 @@
 <div class="container">
-  <button id="goback" mat-raised-button color="accent" (click)="goBack()">Voltar</button>
+
+  <div>
+    <button id="goback" mat-icon-button color="accent" routerLink="/marker-list">
+      <mat-icon>reply</mat-icon> Voltar
+    </button>
+  </div>
 
   <form [formGroup]="markerForm" (ngSubmit)="onSubmit()" class="form-group">
     <div class="form-left">

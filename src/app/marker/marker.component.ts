@@ -219,10 +219,6 @@ export class MarkerComponent implements OnInit {
     }
   }
 
-  public goBack(): void {
-    this.router.navigate(['/marker-list']);
-  }
-
   private loadMarkerDetails(markerId: number): void {
     this.markerService.getMarkerById(markerId).subscribe(
       (marker) => {
