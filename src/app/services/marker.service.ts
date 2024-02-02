@@ -27,8 +27,6 @@ export class MarkerService {
   }
 
   public createMarker(truck: Marker): Observable<any> {
-    this.setDefaultIcon(truck);
-
     const headers = this.createHeaders();
     return this.http
       .post(this.apiUrl, truck, { headers })
@@ -37,8 +35,6 @@ export class MarkerService {
 
   public updateMarker(truck: Marker): Observable<any> {
     const url = `${this.apiUrl}/${truck.id}`;
-
-    this.setDefaultIcon(truck);
     const headers = this.createHeaders();
     return this.http.put(url, truck, { headers }).pipe(catchError(this.handleError));
   }
@@ -63,10 +59,6 @@ export class MarkerService {
   //     catchError(this.handleError)
   //   );
   // }
-
-  private setDefaultIcon(marker: Marker): void {
-    marker.icon = 'assets/images/star.png';
-  }
 
   private createHeaders(): HttpHeaders {
     const credentials = btoa(`${environment.userBackend}:${environment.passwordBackend}`);
