@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class MarkerService {
-  private apiUrl = environment.backendUrl + '/trucksOnMap';
+  private apiUrl = environment.backendUrl + '/markers';
 
   constructor(private http: HttpClient) { }
 

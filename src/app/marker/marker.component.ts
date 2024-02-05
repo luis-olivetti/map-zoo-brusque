@@ -67,6 +67,10 @@ export class MarkerComponent implements OnInit {
     { value: 'assets/images/icons/tree.png', url: 'assets/images/icons/tree.png', label: 'Árvore' },
     { value: 'assets/images/icons/wc.png', url: 'assets/images/icons/wc.png', label: 'Banheiro' },
     { value: 'assets/images/icons/wood.png', url: 'assets/images/icons/wood.png', label: 'Madeira' },
+    { value: 'assets/images/icons/turtle.png', url: 'assets/images/icons/turtle.png', label: 'Tartaruga' },
+    { value: 'assets/images/icons/trip.png', url: 'assets/images/icons/trip.png', label: 'Trilha' },
+    { value: 'assets/images/icons/ticket.png', url: 'assets/images/icons/ticket.png', label: 'Ingresso' },
+    { value: 'assets/images/icons/peacock.png', url: 'assets/images/icons/peacock.png', label: 'Pavão' },
   ];
 
   constructor(

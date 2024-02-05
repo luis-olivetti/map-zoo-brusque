@@ -38,6 +38,14 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
         featureType: 'poi',
         stylers: [{ visibility: 'off' }],
       },
+      {
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#C5F1DA', // Altere esta cor para a tonalidade de verde desejada
+          },
+        ],
+      },
     ],
   };
 
@@ -56,13 +64,13 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
     this.selectedMarker = markerPosition;
 
     this.info =
-    '<div id="content">' +
-    '<div id="siteNotice">' +
-    "</div>" +
-    '<h1 id="firstHeading" class="firstHeading">' + this.selectedMarker.name + '</h1>' +
-    '<div id="bodyContent"><p>' + this.selectedMarker.description  + '</p>' +
-    "</div>" +
-    "</div>";
+      '<div id="content">' +
+      '<div id="siteNotice">' +
+      "</div>" +
+      '<h1 id="firstHeading" class="firstHeading">' + this.selectedMarker.name + '</h1>' +
+      '<div id="bodyContent"><p>' + this.selectedMarker.description + '</p>' +
+      "</div>" +
+      "</div>";
 
     let pos = marker.getPosition();
     let height = 0;
