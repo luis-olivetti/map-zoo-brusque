@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Camada sem título</name>
-    <Style id="line-0288D1-4681-nodesc-normal">
+    <name>Mapa final</name>
+    <Style id="line-757575-4681-nodesc-normal">
       <LineStyle>
-        <color>ffd18802</color>
+        <color>ff757575</color>
         <width>4.681</width>
       </LineStyle>
       <BalloonStyle>
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <Style id="line-0288D1-4681-nodesc-highlight">
+    <Style id="line-757575-4681-nodesc-highlight">
       <LineStyle>
-        <color>ffd18802</color>
+        <color>ff757575</color>
         <width>7.0215</width>
       </LineStyle>
       <BalloonStyle>
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <StyleMap id="line-0288D1-4681-nodesc">
+    <StyleMap id="line-757575-4681-nodesc">
       <Pair>
         <key>normal</key>
-        <styleUrl>#line-0288D1-4681-nodesc-normal</styleUrl>
+        <styleUrl>#line-757575-4681-nodesc-normal</styleUrl>
       </Pair>
       <Pair>
         <key>highlight</key>
-        <styleUrl>#line-0288D1-4681-nodesc-highlight</styleUrl>
+        <styleUrl>#line-757575-4681-nodesc-highlight</styleUrl>
       </Pair>
     </StyleMap>
     <Placemark>
       <name>Linha 1</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
-          -48.9214202,-27.094489,0
+          -48.9214966,-27.0942729,0
           -48.9215221,-27.0942025,0
           -48.92144,-27.094201,0
           -48.921426,-27.094203,0
@@ -81,7 +81,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 2</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -99,7 +99,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 3</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -116,7 +116,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 4</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -137,7 +137,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 5</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -174,7 +174,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 6</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -187,7 +187,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 7</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -212,7 +212,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 8</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -224,7 +224,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 9</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -255,7 +255,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 10</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -291,7 +291,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 11</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -338,7 +338,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 12</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -391,7 +391,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 13</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -449,7 +449,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 14</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -460,13 +460,13 @@
     </Placemark>
     <Placemark>
       <name>Linha 15</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
-          -48.923179,-27.093699,0
-          -48.92324,-27.093678,0
-          -48.923256,-27.09366,0
+          -48.923124,-27.093683,0
+          -48.9232252,-27.0936577,0
+          -48.9232506,-27.0936493,0
           -48.92327,-27.093644,0
           -48.923281,-27.09364,0
           -48.923309,-27.093638,0
@@ -481,11 +481,11 @@
     </Placemark>
     <Placemark>
       <name>Linha 16</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
-          -48.92324,-27.093678,0
+          -48.923179,-27.093699,0
           -48.923263,-27.093671,0
           -48.923297,-27.093668,0
           -48.923333,-27.093665,0
@@ -574,7 +574,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 17</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -643,7 +643,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 18</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -656,7 +656,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 19</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -710,7 +710,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 20</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -790,12 +790,10 @@
     </Placemark>
     <Placemark>
       <name>Linha 21</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
-          -48.923435,-27.094868,0
-          -48.923419,-27.094884,0
           -48.923415,-27.094895,0
           -48.923411,-27.094916,0
           -48.923393,-27.094923,0
@@ -810,7 +808,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 22</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -828,7 +826,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 23</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -989,13 +987,12 @@
           -48.922532,-27.094431,0
           -48.922577,-27.094431,0
           -48.922608,-27.094426,0
-          -48.922645,-27.094429,0
         </coordinates>
       </LineString>
     </Placemark>
     <Placemark>
       <name>Linha 24</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1018,7 +1015,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 25</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1047,7 +1044,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 28</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1073,7 +1070,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 29</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1089,7 +1086,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 30</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1129,11 +1126,11 @@
     </Placemark>
     <Placemark>
       <name>Linha 31</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
-          -48.922511,-27.094689,0
+          -48.922501,-27.094693,0
           -48.922506,-27.094667,0
           -48.922503,-27.094644,0
           -48.922497,-27.094632,0
@@ -1159,7 +1156,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 32</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1182,7 +1179,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 33</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1212,7 +1209,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 34</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1231,7 +1228,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 35</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1257,7 +1254,7 @@
     </Placemark>
     <Placemark>
       <name>Linha 36</name>
-      <styleUrl>#line-0288D1-4681-nodesc</styleUrl>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
@@ -1276,6 +1273,65 @@
           -48.92292,-27.094151,0
           -48.922934,-27.094142,0
           -48.9229821,-27.0941016,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Linha 35</name>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -48.923624,-27.093945,0
+          -48.9235933,-27.0939327,0
+          -48.9235611,-27.0939231,0
+          -48.9235316,-27.0939183,0
+          -48.9235021,-27.0939231,0
+          -48.9234726,-27.0939255,0
+          -48.9234484,-27.0939207,0
+          -48.9234243,-27.0939112,0
+          -48.923391,-27.093896,0
+          -48.923369,-27.09389,0
+          -48.923316,-27.093866,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Linha 36</name>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -48.922026,-27.09394,0
+          -48.9220168,-27.0939207,0
+          -48.9220101,-27.093904,0
+          -48.9220034,-27.0938885,0
+          -48.921998,-27.0938682,0
+          -48.9219967,-27.0938503,0
+          -48.9220061,-27.0938383,0
+          -48.922028,-27.093829,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Linha 38</name>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -48.921453,-27.093893,0
+          -48.921453,-27.093902,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Linha 39</name>
+      <styleUrl>#line-757575-4681-nodesc</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -48.921453,-27.093902,0
+          -48.9214443,-27.093916,0
         </coordinates>
       </LineString>
     </Placemark>
