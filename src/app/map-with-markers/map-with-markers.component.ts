@@ -42,7 +42,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
         elementType: 'geometry',
         stylers: [
           {
-            color: '#C5F1DA', // Altere esta cor para a tonalidade de verde desejada
+            color: '#C5F1DA',
           },
         ],
       },
@@ -130,7 +130,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
 
       const ctaLayer = new google.maps.KmlLayer({
-        url: 'https://raw.githubusercontent.com/luis-olivetti/map-zoo-brusque/main/src/assets/zoo.kml',
+        url: 'https://raw.githubusercontent.com/luis-olivetti/map-zoo-brusque/main/src/assets/final.kml',
         map: this.mapContainer.googleMap,
         clickable: false,
       });
