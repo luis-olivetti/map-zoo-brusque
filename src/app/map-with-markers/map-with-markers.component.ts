@@ -157,9 +157,13 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
     let watchId;
 
     if (navigator.geolocation) {
-      watchId = navigator.geolocation.watchPosition(function (pos) {
+      watchId = navigator.geolocation.watchPosition((pos) => {
         const me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
         myloc.setPosition(me);
+
+        if (this.mapContainer.googleMap) {
+          this.mapContainer.googleMap.setCenter(me);
+        }
       }, (error) => {
         console.log(error);
       }, {
