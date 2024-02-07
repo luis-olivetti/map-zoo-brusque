@@ -71,6 +71,18 @@ export class MarkerComponent implements OnInit {
     { value: 'assets/images/icons/trip.png', url: 'assets/images/icons/trip.png', label: 'Trilha' },
     { value: 'assets/images/icons/ticket.png', url: 'assets/images/icons/ticket.png', label: 'Ingresso' },
     { value: 'assets/images/icons/peacock.png', url: 'assets/images/icons/peacock.png', label: 'Pavão' },
+    { value: 'assets/images/icons/anteater.png', url: 'assets/images/icons/anteater.png', label: 'Tamanduá' },
+    { value: 'assets/images/icons/cave.png', url: 'assets/images/icons/cave.png', label: 'Gruta' },
+    { value: 'assets/images/icons/crocodile.png', url: 'assets/images/icons/crocodile.png', label: 'Jacaré' },
+    { value: 'assets/images/icons/furao.png', url: 'assets/images/icons/furao.png', label: 'Furão' },
+    { value: 'assets/images/icons/handgrip.png', url: 'assets/images/icons/handgrip.png', label: 'Balanço' },
+    { value: 'assets/images/icons/iguana.png', url: 'assets/images/icons/iguana.png', label: 'Iguana' },
+    { value: 'assets/images/icons/jabuti.png', url: 'assets/images/icons/jabuti.png', label: 'Jabuti' },
+    { value: 'assets/images/icons/macaw.png', url: 'assets/images/icons/macaw.png', label: 'Arara' },
+    { value: 'assets/images/icons/monkey2.png', url: 'assets/images/icons/monkey2.png', label: 'Macaco 2' },
+    { value: 'assets/images/icons/parrot.png', url: 'assets/images/icons/parrot.png', label: 'Papagaio' },
+    { value: 'assets/images/icons/tapir.png', url: 'assets/images/icons/tapir.png', label: 'Anta' },
+    { value: 'assets/images/icons/toucan.png', url: 'assets/images/icons/toucan.png', label: 'Tucano' },
   ];
 
   constructor(
