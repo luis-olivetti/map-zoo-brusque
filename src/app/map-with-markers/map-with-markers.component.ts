@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subscription, of } from 'rxjs';
 import { catchError, mapTo } from 'rxjs/operators';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
@@ -21,7 +21,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
 
   public optionsMap: google.maps.MapOptions = {
     center: { lat: -27.094245073541256, lng: -48.92152550568243 },
-    zoom: 19,
+    zoom: 25,
     streetViewControl: false,
     disableDefaultUI: true,
     restriction: {
@@ -33,6 +33,8 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
       },
       strictBounds: true,
     },
+    minZoom: 20,
+    maxZoom: 30,
     styles: [
       {
         featureType: 'poi',
@@ -67,28 +69,18 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
       '<div id="content">' +
       '<div id="siteNotice">' +
       "</div>" +
-      '<h1 id="firstHeading" class="firstHeading">' + this.selectedMarker.name + '</h1>' +
-      '<div id="bodyContent"><p>' + this.selectedMarker.description + '</p>' +
-      "</div>" +
-      "</div>";
+      '<h1 id="firstHeading" class="firstHeading">' + this.selectedMarker.name + '</h1>';
 
-    let pos = marker.getPosition();
-    let height = 0;
-    // if (pos) {
-    //   // Se o infoWindow estiver muito próximo do topo da tela, ele será movido para baixo
-    //   if (pos.lat() > -27.0941) {
-    //     height = 300;
-    //   }
+    if (this.selectedMarker.description && this.selectedMarker.description.length > 5) {
+      this.info += '<div id="bodyContent"><p>' + this.selectedMarker.description + '</p>' +
+        "</div>";
+    }
 
-    //   if (pos.lat() < -27.0948) {
-    //     height = 0;
-    //   }
-    // }
+    this.info += "</div>";
 
     const infoWindowOptions: google.maps.InfoWindowOptions = {
       maxWidth: 300,
       content: this.info,
-      pixelOffset: new google.maps.Size(0, height),
     };
 
     this.infoWindow.options = infoWindowOptions;
@@ -105,7 +97,6 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
   constructor(
     private httpClient: HttpClient,
     private markersService: MarkerService,
-    private renderer: Renderer2
   ) {
     this.apiLoaded = this.httpClient
       .jsonp(
@@ -127,6 +118,8 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
 
   onMapReady() {
     if (this.mapContainer.googleMap) {
+      this.mapContainer.googleMap.setZoom(25);
+
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
 
       const ctaLayer = new google.maps.KmlLayer({
@@ -137,10 +130,15 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
 
       ctaLayer.setMap(this.mapContainer.googleMap);
 
-      if (mapContainerElement) {
-        mapContainerElement.style.height = (window.innerHeight - 58) + 'px';//(window.innerHeight * 0.8) + 'px';
-        mapContainerElement.style.width = window.innerWidth + 'px';
-      }
+      const resizeMap = () => {
+        if (mapContainerElement) {
+          mapContainerElement.style.height = (window.innerHeight - 58) + 'px';
+          mapContainerElement.style.width = window.innerWidth + 'px';
+        }
+      };
+
+      window.addEventListener('resize', resizeMap);
+      resizeMap();
     } else {
       console.log('streetViewLayer not set');
     }
