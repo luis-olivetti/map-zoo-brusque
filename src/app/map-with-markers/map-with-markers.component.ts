@@ -18,6 +18,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
   public apiLoaded: Observable<boolean>;
 
   public info: string = '';
+  private centerMe: boolean = false;
 
   public optionsMap: google.maps.MapOptions = {
     center: { lat: -27.094245073541256, lng: -48.92152550568243 },
@@ -118,6 +119,8 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
 
   onMapReady() {
     if (this.mapContainer.googleMap) {
+      this.addCustomControl();
+
       this.mapContainer.googleMap.setZoom(25);
 
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
@@ -153,13 +156,12 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
     });
 
     let watchId;
-
     if (navigator.geolocation) {
       watchId = navigator.geolocation.watchPosition((pos) => {
         const me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
         myloc.setPosition(me);
 
-        if (this.mapContainer.googleMap) {
+        if (this.mapContainer.googleMap && this.centerMe) {
           this.mapContainer.googleMap.setCenter(me);
         }
       }, (error) => {
@@ -192,5 +194,31 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
           },
         }));
       });
+  }
+
+  private addCustomControl() {
+    const controlDiv = document.createElement('div');
+    const controlUI = document.createElement('div');
+    controlDiv.appendChild(controlUI);
+
+    const controlImage = document.createElement('img');
+    controlImage.src = 'assets/images/focus-out.png';
+    controlImage.style.width = '48px';
+    controlImage.style.height = '48px';
+    controlImage.style.padding = '5px';
+    controlUI.appendChild(controlImage);
+
+    controlUI.addEventListener('click', () => {
+      this.toggleCenterMe();
+      controlImage.src = this.centerMe ? 'assets/images/focus-in.png' : 'assets/images/focus-out.png';
+    });
+
+    if (this.mapContainer.googleMap) {
+      this.mapContainer.googleMap.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+    }
+  }
+
+  private toggleCenterMe() {
+    this.centerMe = !this.centerMe;
   }
 }
