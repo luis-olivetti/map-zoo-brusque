@@ -93,6 +93,9 @@ export class MarkerComponent implements OnInit {
     { value: 'assets/images/icons/parrot3.png', url: 'assets/images/icons/parrot3.png', label: 'Papagaio 3' },
     { value: 'assets/images/icons/parrot4.png', url: 'assets/images/icons/parrot4.png', label: 'Papagaio 4' },
     { value: 'assets/images/icons/puma.png', url: 'assets/images/icons/puma.png', label: 'Puma' },
+    { value: 'assets/images/icons/piramide.png', url: 'assets/images/icons/piramide.png', label: 'Pirâmide' },
+    { value: 'assets/images/icons/sundial.png', url: 'assets/images/icons/sundial.png', label: 'Relógio de Sol' },
+    { value: 'assets/images/icons/quati.png', url: 'assets/images/icons/quati.png', label: 'Quati' },
   ];
 
   constructor(
