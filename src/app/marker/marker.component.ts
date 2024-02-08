@@ -83,6 +83,16 @@ export class MarkerComponent implements OnInit {
     { value: 'assets/images/icons/parrot.png', url: 'assets/images/icons/parrot.png', label: 'Papagaio' },
     { value: 'assets/images/icons/tapir.png', url: 'assets/images/icons/tapir.png', label: 'Anta' },
     { value: 'assets/images/icons/toucan.png', url: 'assets/images/icons/toucan.png', label: 'Tucano' },
+    { value: 'assets/images/icons/alpaca.png', url: 'assets/images/icons/alpaca.png', label: 'Lhama' },
+    { value: 'assets/images/icons/bird2.png', url: 'assets/images/icons/bird2.png', label: 'Pássaro 2' },
+    { value: 'assets/images/icons/capybara.png', url: 'assets/images/icons/capybara.png', label: 'Capivara' },
+    { value: 'assets/images/icons/gaviao.png', url: 'assets/images/icons/gaviao.png', label: 'gaviao' },
+    { value: 'assets/images/icons/golden-lion-tamarin.png', url: 'assets/images/icons/golden-lion-tamarin.png', label: 'Mico Leão' },
+    { value: 'assets/images/icons/hedgehog.png', url: 'assets/images/icons/hedgehog.png', label: 'Ouriço' },
+    { value: 'assets/images/icons/parrot2.png', url: 'assets/images/icons/parrot2.png', label: 'Papagaio 2' },
+    { value: 'assets/images/icons/parrot3.png', url: 'assets/images/icons/parrot3.png', label: 'Papagaio 3' },
+    { value: 'assets/images/icons/parrot4.png', url: 'assets/images/icons/parrot4.png', label: 'Papagaio 4' },
+    { value: 'assets/images/icons/puma.png', url: 'assets/images/icons/puma.png', label: 'Puma' },
   ];
 
   constructor(
