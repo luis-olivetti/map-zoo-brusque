@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Backend
 
-This project uses [Json Server](https://github.com/typicode/json-server).
+Link for [backend](https://github.com/luis-olivetti/map-zoo-brusque-back) project.
 
 ## How to run
 
@@ -28,14 +28,20 @@ $ npm start
 
 When starting the project, the map will display the Zoobotanical region of Brusque - SC with some markers indicating the locations of the animals and other points.
 
-![map-with-markers](./src/assets/images/map-with-markers.png)
+<p align="center">
+  <img src="./src/assets/images/map-with-markers.png" alt="Map with Markers">
+</p>
 
 In the top-left corner of the side menu, there is an option called `Marcadores` that navigates the website to a page with all registered markers, where you can **add**, **edit**, and **delete** records.
 
-![marker-list](./src/assets/images/marker-list.png)
+<p align="center">
+  <img src="./src/assets/images/marker-list.png" alt="Map list">
+</p>
 
 Clicking on `Adicionar` or editing (using the pencil icon) will navigate the website to a page where the operation can be performed.
 
-![marker](./src/assets/images/marker.png)
+<p align="center">
+  <img src="./src/assets/images/marker.png" alt="Marker">
+</p>
 
 This is it!
