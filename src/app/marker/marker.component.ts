@@ -24,7 +24,7 @@ export class MarkerComponent implements OnInit {
   public markerOptions: google.maps.MarkerOptions = { draggable: false };
   public markerPosition: google.maps.LatLngLiteral | null = null;
 
-  private durationInSeconds = 2;
+  private durationInSeconds = 1;
 
   public optionsMap: google.maps.MapOptions = {
     center: { lat: -27.094245073541256, lng: -48.92152550568243 },
@@ -126,16 +126,6 @@ export class MarkerComponent implements OnInit {
     });
   }
 
-  private nonZeroValidator(control: any) {
-    const value = control.value;
-
-    if (value === 0) {
-      return { nonZero: true };
-    }
-
-    return null;
-  }
-
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -194,7 +184,7 @@ export class MarkerComponent implements OnInit {
         timeout: 5000
       });
     } else {
-      alert("Geolocalização não suportada neste navegador.");
+      this.openSnackBar("Geolocalização não suportada neste navegador.");
     }
   }
 
@@ -240,7 +230,7 @@ export class MarkerComponent implements OnInit {
               this.router.navigate(['/marker-list']);
             }, this.durationInSeconds * 1000);
           },
-          (error) => {
+          () => {
             this.openSnackBar('Ops, ocorreu uma falha ao alterar.');
           }
         );
@@ -252,7 +242,7 @@ export class MarkerComponent implements OnInit {
               this.router.navigate(['/marker-list']);
             }, this.durationInSeconds * 1000);
           },
-          (error) => {
+          () => {
             this.openSnackBar('Ops, ocorreu uma falha ao cadastrar.');
           }
         );
@@ -278,6 +268,16 @@ export class MarkerComponent implements OnInit {
   }
 
   private isMobile(): boolean {
-    return window.innerWidth <= 768; // Defina um ponto de quebra adequado para dispositivos móveis
+    return window.innerWidth <= 768;
+  }
+
+  private nonZeroValidator(control: any) {
+    const value = control.value;
+
+    if (value === 0) {
+      return { nonZero: true };
+    }
+
+    return null;
   }
 }

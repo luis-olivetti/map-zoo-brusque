@@ -59,35 +59,6 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
     options: google.maps.MarkerOptions;
   }[] = [];
 
-  public handleMapDrag(): void {
-    this.infoWindow.close();
-  }
-
-  public handleMarkerClick(markerPosition: any, marker: MapMarker): void {
-    this.selectedMarker = markerPosition;
-
-    this.info =
-      '<div id="content">' +
-      '<div id="siteNotice">' +
-      "</div>" +
-      '<h1 id="firstHeading" class="firstHeading">' + this.selectedMarker.name + '</h1>';
-
-    if (this.selectedMarker.description && this.selectedMarker.description.length > 5) {
-      this.info += '<div id="bodyContent"><p>' + this.selectedMarker.description + '</p>' +
-        "</div>";
-    }
-
-    this.info += "</div>";
-
-    const infoWindowOptions: google.maps.InfoWindowOptions = {
-      maxWidth: 300,
-      content: this.info,
-    };
-
-    this.infoWindow.options = infoWindowOptions;
-    this.infoWindow.open(marker, true);
-  }
-
   public selectedMarker!: {
     name: string;
     description: string;
@@ -109,6 +80,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
         catchError(() => of(false))
       );
   }
+
   ngOnDestroy(): void {
     this.markersSubscription.unsubscribe();
   }
@@ -176,20 +148,49 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
     }
   }
 
+  public handleMapDrag(): void {
+    this.infoWindow.close();
+  }
+
+  public handleMarkerClick(markerPosition: any, marker: MapMarker): void {
+    this.selectedMarker = markerPosition;
+
+    this.info =
+      '<div id="content">' +
+      '<div id="siteNotice">' +
+      "</div>" +
+      '<h1 id="firstHeading" class="firstHeading">' + this.selectedMarker.name + '</h1>';
+
+    if (this.selectedMarker.description && this.selectedMarker.description.length > 5) {
+      this.info += '<div id="bodyContent"><p>' + this.selectedMarker.description + '</p>' +
+        "</div>";
+    }
+
+    this.info += "</div>";
+
+    const infoWindowOptions: google.maps.InfoWindowOptions = {
+      maxWidth: 300,
+      content: this.info,
+    };
+
+    this.infoWindow.options = infoWindowOptions;
+    this.infoWindow.open(marker, true);
+  }
+
   private getMarkers(): void {
     this.markersSubscription = this.markersService
       .getMarkers()
-      .subscribe((trucks) => {
-        this.markerPositions = trucks.map((truck) => ({
+      .subscribe((markers) => {
+        this.markerPositions = markers.map((marker) => ({
           position: {
-            lat: truck.lat,
-            lng: truck.lng,
+            lat: marker.lat,
+            lng: marker.lng,
           },
-          name: truck.name,
-          description: truck.description,
+          name: marker.name,
+          description: marker.description,
           options: {
             icon: {
-              url: truck.icon,
+              url: marker.icon,
             },
           },
         }));

@@ -15,7 +15,6 @@ import { SnackBarComponent } from './shared/snack-bar/snack-bar.component';
 import { MarkerListComponent } from './marker-list/marker-list.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
-import { FooterComponent } from './footer/footer.component';
 import { CorsInterceptor } from './cors.interceptor';
 import { LoginComponent } from './login/login.component';
 
@@ -28,7 +27,6 @@ import { LoginComponent } from './login/login.component';
     MarkerListComponent,
     ConfirmDialogComponent,
     HeaderMenuComponent,
-    FooterComponent,
     LoginComponent,
   ],
   imports: [

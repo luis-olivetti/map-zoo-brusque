@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
       if (this.authService.isAuthenticated()) {
         return true;
       } else {
-        // Redirecionar para a rota pública se o usuário não estiver autenticado
         return this.router.parseUrl('/login');
       }
   }

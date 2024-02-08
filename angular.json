@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CadeMeuFoodTruck": {
+    "MapZooBrusque": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cade-meu-food-truck",
+            "outputPath": "dist/map-zoo-brusque",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "CadeMeuFoodTruck:build:production"
+              "browserTarget": "MapZooBrusque:build:production"
             },
             "development": {
-              "browserTarget": "CadeMeuFoodTruck:build:development"
+              "browserTarget": "MapZooBrusque:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "CadeMeuFoodTruck:build"
+            "browserTarget": "MapZooBrusque:build"
           }
         },
         "test": {
