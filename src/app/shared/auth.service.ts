@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import * as sha256 from 'crypto-js/sha256';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,10 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   login(username: string, password: string): boolean {
-    if (username === environment.user && password === environment.password) {
+    const hashedUsername = sha256(username).toString();
+    const hashedPassword = sha256(password).toString();
+
+    if (hashedUsername === environment.hashedUser && hashedPassword === environment.hashedPassword) {
       const expirationTime = new Date().getTime() + 5 * 60 * 1000;
       sessionStorage.setItem('tokenExpiration', expirationTime.toString());
 
