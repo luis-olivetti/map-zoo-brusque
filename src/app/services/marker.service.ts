@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Marker } from '../models/marker';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,39 +10,81 @@ import { environment } from 'src/environments/environment';
 })
 export class MarkerService {
   private apiUrl = environment.backendUrl + '/markers';
+  private token: string = '';
 
   constructor(private http: HttpClient) { }
 
   public getMarkers(): Observable<Marker[]> {
-    const headers = this.createHeaders();
     return this.http
-      .get<Marker[]>(this.apiUrl, { headers })
+      .get<Marker[]>(this.apiUrl, { headers: this.createHeaders(false) })
       .pipe(catchError(this.handleError));
   }
 
   public getMarkerById(id: number): Observable<Marker> {
     const url = `${this.apiUrl}/${id}`;
-    const headers = this.createHeaders();
-    return this.http.get<Marker>(url, { headers }).pipe(catchError(this.handleError));
+    return this.authenticateAndCall(() => {
+      return this.http.get<Marker>(url, { headers: this.createHeaders(true) }).pipe(catchError(this.handleError));
+    });
   }
 
   public createMarker(marker: Marker): Observable<any> {
-    const headers = this.createHeaders();
-    return this.http
-      .post(this.apiUrl, marker, { headers })
-      .pipe(catchError(this.handleError));
+    return this.authenticateAndCall(() => {
+      return this.http.post(this.apiUrl, marker, { headers: this.createHeaders(true) }).pipe(
+        catchError(this.handleError)
+      );
+    });
   }
 
   public updateMarker(marker: Marker): Observable<any> {
     const url = `${this.apiUrl}/${marker.id}`;
-    const headers = this.createHeaders();
-    return this.http.put(url, marker, { headers }).pipe(catchError(this.handleError));
+    return this.authenticateAndCall(() => {
+      return this.http.put(url, marker, { headers: this.createHeaders(true) }).pipe(catchError(this.handleError));
+    });
   }
 
   public deleteMarker(id: number): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
-    const headers = this.createHeaders();
-    return this.http.delete(url, { headers }).pipe(catchError(this.handleError));
+    return this.authenticateAndCall(() => {
+      return this.http.delete(url, { headers: this.createHeaders(true) }).pipe(catchError(this.handleError));
+    });
+  }
+
+  private authenticateAndCall(call: () => Observable<any>): Observable<any> {
+    return this.authenticate().pipe(
+      switchMap(() => {
+        return call();
+      })
+    );
+  }
+
+  private authenticate(): Observable<any> {
+    const username = environment.userBackend;
+    const password = environment.passwordBackend;
+    const body = { username, password };
+
+    return this.http.post<any>(`${environment.backendUrl}/login`, body).pipe(
+      map(response => {
+        this.token = response.token;
+        return response;
+      }),
+      catchError(error => {
+        console.error('Authentication error:', error);
+        return throwError('Authentication failed');
+      })
+    );
+  }
+
+  private createHeaders(includeSecondaryToken: boolean): HttpHeaders {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`,
+    });
+
+    if (includeSecondaryToken) {
+      headers = headers.set('secondaryToken', environment.secondaryTokenBackend);
+    }
+
+    return headers;
   }
 
   private handleError(error: any): Observable<never> {
@@ -50,12 +92,15 @@ export class MarkerService {
     return throwError('Something went wrong. Please try again later.');
   }
 
-  private createHeaders(): HttpHeaders {
-    const credentials = btoa(`${environment.userBackend}:${environment.passwordBackend}`);
-
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Basic ${credentials}`,
-    });
+  private createHeadersAndAuthenticate(): Observable<HttpHeaders> {
+    return this.authenticate().pipe(
+      map(() => {
+        return this.createHeaders(true);
+      }),
+      catchError(error => {
+        console.error('Authentication error:', error);
+        return throwError('Authentication failed');
+      })
+    );
   }
 }
