@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import * as sha256 from 'crypto-js/sha256';
+import { tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): boolean {
-    const hashedUsername = sha256(username).toString();
-    const hashedPassword = sha256(password).toString();
+  public login(username: string, password: string): Observable<any> {
+    console.log('login');
 
-    if (hashedUsername === environment.hashedUser && hashedPassword === environment.hashedPassword) {
-      const expirationTime = new Date().getTime() + 5 * 60 * 1000;
-      sessionStorage.setItem('tokenExpiration', expirationTime.toString());
-
-      return true;
-    } else {
-      return false;
-    }
+    return this.http.post<any>(`${environment.backendUrl}/login`, { username, password })
+      .pipe(
+        tap((response: { token: string }) => {
+          if (response && response.token) {
+            const expirationTime = new Date().getTime() + 5 * 60 * 1000; // 5 minutos de expiração
+            sessionStorage.setItem('tokenExpiration', expirationTime.toString());
+            sessionStorage.setItem('jwtToken', response.token);
+          }
+        })
+      );
   }
 
   public isAuthenticated(): boolean {
@@ -32,5 +36,6 @@ export class AuthService {
 
   public logout(): void {
     sessionStorage.removeItem('tokenExpiration');
+    sessionStorage.removeItem('jwtToken');
   }
 }
