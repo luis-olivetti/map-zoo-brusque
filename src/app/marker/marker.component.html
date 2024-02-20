@@ -33,7 +33,7 @@
         <mat-label>Imagem</mat-label>
         <mat-select formControlName="icon">
           <mat-option *ngFor="let image of imageOptions" [value]="image.value">
-            <img class="image-icon" src="{{ image.url }}" alt="{{ image.label }}" width="32" height="32">
+            <img class="image-icon" src="{{ image.value }}" alt="{{ image.label }}" width="32" height="32">
             {{ image.label }}
           </mat-option>
         </mat-select>
