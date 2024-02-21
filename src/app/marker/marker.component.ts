@@ -25,10 +25,13 @@ export class MarkerComponent implements OnInit {
   public markerPosition: google.maps.LatLngLiteral | null = null;
 
   private durationInSeconds = 1;
+  private centerMe: boolean = false;
 
   public optionsMap: google.maps.MapOptions = {
     center: { lat: -27.094245073541256, lng: -48.92152550568243 },
-    zoom: 19,
+    zoom: 25,
+    minZoom: 20,
+    maxZoom: 30,
     streetViewControl: false,
     disableDefaultUI: true,
     restriction: {
@@ -138,10 +141,17 @@ export class MarkerComponent implements OnInit {
         this.operation = 'EDIT';
       }
     });
+
+    this.orderImages();
   }
 
   onMapReady() {
     if (this.mapContainer.googleMap) {
+
+      this.addCustomControl();
+
+      this.mapContainer.googleMap.setZoom(30);
+
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
 
       const ctaLayer = new google.maps.KmlLayer({
@@ -152,44 +162,20 @@ export class MarkerComponent implements OnInit {
 
       ctaLayer.setMap(this.mapContainer.googleMap);
 
-      if (mapContainerElement) {
-        if (this.isMobile()) {
-          mapContainerElement.style.height = '300px';
-          mapContainerElement.style.width = window.innerWidth + 'px';
-        } else {
-          mapContainerElement.style.height = '500px';
+      const resizeMap = () => {
+        if (mapContainerElement) {
+          mapContainerElement.style.height = this.isMobile() ? '300px' : '500px';
           mapContainerElement.style.width = window.innerWidth + 'px';
         }
-      }
+      };
+
+      window.addEventListener('resize', resizeMap);
+      resizeMap();
     } else {
       console.log('streetViewLayer not set');
     }
 
-    var myloc = new google.maps.Marker({
-      clickable: false,
-      zIndex: 999,
-      map: this.mapContainer.googleMap,
-      icon: {
-        url: "assets/images/guy.png",
-      }
-    });
-
-    let watchId;
-
-    if (navigator.geolocation) {
-      watchId = navigator.geolocation.watchPosition(function (pos) {
-        const me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-        myloc.setPosition(me);
-      }, (error) => {
-        console.log(error);
-      }, {
-        enableHighAccuracy: true,
-        maximumAge: 0,
-        timeout: 5000
-      });
-    } else {
-      this.openSnackBar("Geolocalização não suportada neste navegador.");
-    }
+    this.centerOnMe();
   }
 
   public addMarker(event: google.maps.MapMouseEvent) {
@@ -283,5 +269,68 @@ export class MarkerComponent implements OnInit {
     }
 
     return null;
+  }
+
+  private addCustomControl() {
+    const controlDiv = document.createElement('div');
+    const controlUI = document.createElement('div');
+    controlDiv.appendChild(controlUI);
+
+    const controlImage = document.createElement('img');
+    controlImage.src = 'assets/images/focus-out.png';
+    controlImage.style.width = '48px';
+    controlImage.style.height = '48px';
+    controlImage.style.padding = '5px';
+    controlUI.appendChild(controlImage);
+
+    controlUI.addEventListener('click', () => {
+      this.toggleCenterMe();
+      controlImage.src = this.centerMe ? 'assets/images/focus-in.png' : 'assets/images/focus-out.png';
+    });
+
+    if (this.mapContainer.googleMap) {
+      this.mapContainer.googleMap.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+    }
+  }
+
+  private toggleCenterMe() {
+    this.centerMe = !this.centerMe;
+  }
+
+  private centerOnMe() {
+    var myloc = new google.maps.Marker({
+      clickable: false,
+      zIndex: 999,
+      map: this.mapContainer.googleMap,
+      icon: {
+        url: "assets/images/guy.png",
+      }
+    });
+
+    let watchId;
+    if (navigator.geolocation) {
+      watchId = navigator.geolocation.watchPosition((pos) => {
+        const me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+        myloc.setPosition(me);
+
+        if (this.mapContainer.googleMap && this.centerMe) {
+          this.mapContainer.googleMap.setCenter(me);
+        }
+      }, (error) => {
+        console.log(error);
+      }, {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 5000
+      });
+    } else {
+      this.openSnackBar("Geolocalização não suportada neste navegador.");
+    }
+  }
+
+  private orderImages() {
+    this.imageOptions.sort((a, b) => {
+      return a.label.localeCompare(b.label);
+    });
   }
 }

@@ -39,39 +39,26 @@
         </mat-select>
       </mat-form-field>
 
-      <button
-        class="button-operation"
-        mat-raised-button
-        color="primary"
-        type="submit"
-        *ngIf="this.operation !== 'EDIT'"
-      >
+      <button class="button-operation" mat-raised-button color="primary" type="submit"
+        *ngIf="this.operation !== 'EDIT'">
         Cadastrar
       </button>
-      <button
-        class="button-operation"
-        mat-raised-button
-        color="primary"
-        type="submit"
-        *ngIf="this.operation === 'EDIT'"
-      >
+      <button class="button-operation" mat-raised-button color="primary" type="submit"
+        *ngIf="this.operation === 'EDIT'">
         Alterar
       </button>
     </div>
 
     <div class="form-right">
       <legend class="title">
-        Selecione no mapa onde fica aproximadamente o animal ou espaço e os campos de
+        Indique no mapa onde fica aproximadamente a atração e os campos de
         latitude e longitude serão preenchidos automaticamente *
       </legend>
 
       <div id="map" *ngIf="apiLoaded | async">
-        <google-map #mapContainer [options]="optionsMap" (mapClick)="addMarker($event)" (projectionChanged)="onMapReady()">
-          <map-marker
-            *ngIf="markerPosition"
-            [position]="markerPosition"
-            [options]="markerOptions"
-          ></map-marker>
+        <google-map #mapContainer [options]="optionsMap" (mapClick)="addMarker($event)"
+          (projectionChanged)="onMapReady()">
+          <map-marker *ngIf="markerPosition" [position]="markerPosition" [options]="markerOptions"></map-marker>
         </google-map>
       </div>
 
