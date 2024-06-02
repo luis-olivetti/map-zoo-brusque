@@ -98,7 +98,7 @@ export class MapWithMarkersComponent implements OnInit, OnDestroy {
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
 
       const ctaLayer = new google.maps.KmlLayer({
-        url: 'https://raw.githubusercontent.com/luis-olivetti/map-zoo-brusque/main/src/assets/final.kml',
+        url: 'https://raw.githubusercontent.com/luis-olivetti/map-zoo-brusque/main/src/assets/final2.kml',
         map: this.mapContainer.googleMap,
         clickable: false,
       });
