@@ -155,7 +155,7 @@ export class MarkerComponent implements OnInit {
       const mapContainerElement = this.mapContainer.googleMap?.getDiv();
 
       const ctaLayer = new google.maps.KmlLayer({
-        url: 'https://raw.githubusercontent.com/luis-olivetti/map-zoo-brusque/main/src/assets/final4.kml',
+        url: 'https://raw.githubusercontent.com/luis-olivetti/map-zoo-brusque/main/src/assets/final5.kml',
         map: this.mapContainer.googleMap,
         clickable: false,
       });
